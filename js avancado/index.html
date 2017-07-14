@@ -28,19 +28,21 @@
     <div class="container">
       <div class="form-inline">
         <div class="form-group">
-          <label for="">Descrição</label>
           <input type="text" class="form-control" id="desc" placeholder="Descrição">
         </div>
         <div class="form-group">
-          <label for="">Quantidade</label>
           <input type="text" class="form-control" id="qtd" placeholder="Quantidade">
         </div>
         <div class="form-group">
-          <label for="">Valor</label>
           <input type="text" class="form-control" id="valor" placeholder="Valor">
         </div>
-        <button type="button" name="button" class="btn btn-primary" onclick="addData()">Add</button>
+        <span id="btnUpdate" style="display:none">
+        <button type="button" onclick="updateDados()" class="btn btn-default" name="button">Salvar</button>
+        <button type="button" onclick="resetForm()" class="btn btn-default" name="button">Cancelar</button>
+         </span>
+        <button type="button" name="button" id="buttonAdd" class="btn btn-primary" onclick="addData()">Add</button>
       </div>
+      <br>
       <table class="table table-bordered" id="listTable">
       </table>
       <div id="total"></div>

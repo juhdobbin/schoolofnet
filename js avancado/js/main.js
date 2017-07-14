@@ -18,7 +18,7 @@ function setList(list){
   var table = '<thead><tr><td>produto</td><td>quantidade</td><td>valor</td><td>açao</td></tr></thead><tbody>';
   //for que vai percorrer o array list e criar as linhas da tabela
   for(var key in list){
-    table += '<tr><td>'+ formataDesc(list[key].desc) +'</td><td>'+ list[key].amount +'</td><td>'+ formatValue(list[key].value) +'</td><td>Edit | Delete</td></tr>';
+    table += '<tr><td>'+ formataDesc(list[key].desc) +'</td><td>'+ list[key].amount +'</td><td>'+ formatValue(list[key].value) +'</td><td><button onclick="setUpdate('+key+')" class="btn default">Edit</button> | Delete</td></tr>';
   }
   table += '</tbody>';
     document.getElementById("listTable").innerHTML = table;
@@ -47,6 +47,32 @@ function addData(){
 //unshift equivale a append, ou seja, adiciona no final da lista
   list.unshift({"desc":desc,"amount":qtd ,"value":preco});
   //
+  setList(list);
+}
+
+function setUpdate(id){
+  var obj = list[id];
+  document.getElementById("desc").value = obj.desc;
+  document.getElementById("qtd").value = obj.amount;
+  document.getElementById("valor").value = obj.desc;
+  document.getElementById("btnUpdate").style.display="inline-block";
+  document.getElementById("buttonAdd").style.display="none";
+}
+function resetForm(){
+  document.getElementById("desc").value="";
+  document.getElementById("qtd").value="";
+  document.getElementById("valor").value="";
+  document.getElementById("btnUpdate").style.display="none";
+  document.getElementById("buttonAdd").style.display="inline-block"
+}
+function updateData(){
+  var id = document.getElementById("idUpdate").value;
+  var desc = document.getElementById("desc").value;
+  var qtd = document.getElementById("qtd").value;
+  var preco = document.getElementById("valor").value;
+
+  list[id]={{"desc":desc,"amount":qtd ,"value":preco}};
+  resetForm();
   setList(list);
 }
 
