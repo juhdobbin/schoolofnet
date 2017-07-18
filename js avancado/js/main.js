@@ -54,9 +54,10 @@ function setUpdate(id){
   var obj = list[id];
   document.getElementById("desc").value = obj.desc;
   document.getElementById("qtd").value = obj.amount;
-  document.getElementById("valor").value = obj.desc;
+  document.getElementById("valor").value = obj.value;
   document.getElementById("btnUpdate").style.display="inline-block";
-  document.getElementById("buttonAdd").style.display="none";
+  document.getElementById("buttonAdd").style.display="none"
+  document.getElementById("inputIdUpdate").innerHTML = '<input id="idUpdate" type="hidden" value="'+id+'"/>';
 }
 function resetForm(){
   document.getElementById("desc").value="";
@@ -71,7 +72,7 @@ function updateData(){
   var qtd = document.getElementById("qtd").value;
   var preco = document.getElementById("valor").value;
 
-  list[id]={{"desc":desc,"amount":qtd ,"value":preco}};
+  list[id]={"desc":desc,"amount":qtd ,"value":preco};
   resetForm();
   setList(list);
 }
